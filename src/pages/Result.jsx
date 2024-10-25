@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import SidebarMainDashboard from '../components/SidebarMainDashboard';
 import NavbarMainDashboard from '../components/NavbarMainDashboard';
 import '../style/Result.css';
+import axios from 'axios';
 const Result = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false); 
   const [isSidebarOpen, setSidebarOpen] = useState(false); // State for sidebar open/close

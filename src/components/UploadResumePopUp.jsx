@@ -8,12 +8,13 @@ const UploadResumePopUp = ({
   closePopup,
   // isError,
   // startMockInterview,
-  updateFirstQuestion,
+  updateQuestion,
   setLoading,
   isLoading,
 }) => {
   const [file, setFile] = useState(null);
   const [error, setError] = useState("");
+
   // const [isLoading, setLoading] = useState(false);
   const fileInputRef = useRef(null);
   const [retrying, setRetrying] = useState(false); // State to track if we are retrying
@@ -53,8 +54,9 @@ const UploadResumePopUp = ({
       console.log("Starting upload process...");
       const formData = new FormData();
       formData.append("file", selectedFile);
+
       const response = await axios.post(
-        "http://localhost:5000/api/uploadResume",
+        "http://localhost:5000/api/generateQuestions",
         formData,
         {
           headers: {
@@ -62,8 +64,8 @@ const UploadResumePopUp = ({
           },
         }
       );
-      console.log(response.data.text);
-      updateFirstQuestion(response.data.text);
+      console.log(response.data.question);
+      updateQuestion(response.data.question);
     } catch (err) {
       console.log("An error occurred during upload:", err.message);
     } finally {
