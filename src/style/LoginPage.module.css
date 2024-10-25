@@ -4,13 +4,13 @@
 }
 /* Color Variables */
 :root {
-  --primary-color: #f8ab7e;
-  --secondary-color: #009379;
-  --text-black-color: #2d2d2d;
-  --text-white-color: #fff;
-  --btn-color: #e5f4f2;
-  --header-bg-color: #e5f4f2;;
-  --bg-color: #e5f4f2;
+  --primary-color: #F5F88F !important;
+  --secondary-color: #5CC39A !important;
+  --text-black-color: #010101 !important;
+  --text-white-color: #fff !important;
+  --btn-color: #eef5f4 !important;
+  --header-bg-color: #F5F88F !important;
+  --bg-color: #F5F88F!important;
 }  
 .loginSection{
   width: 100%;
@@ -18,6 +18,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--bg-color);
 }
 .loginContainer {
   width: 30%;
@@ -25,12 +26,13 @@
   margin: auto;
   padding: 2rem;
   border: 1px solid var(--btn-color);
-  border-radius: 8px;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 15px;
+  background-color: var(--text-white-color);
 }
  
 .inputGroup {
@@ -54,7 +56,7 @@
 .loginButton {
   width: 100%;
   padding: 0.75rem;
-  background-color: var(--primary-color);
+  background-color: var(--text-black-color);
   color: var(--text-white-color);
   border: none;
   border-radius: 4px;
@@ -65,7 +67,7 @@
 .googleButton {
   background-color: var(--btn-color);
   color: var(--text-black-color);
-  border: 1px solid var(--secondary-color);
+  border: 1px solid var(--text-black-color);
   padding: 0.75rem;
   width: 100%;
   border-radius: 4px;
@@ -97,5 +99,5 @@
   background: none;
   cursor: pointer;
   text-decoration: underline;
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }

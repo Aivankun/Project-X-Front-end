@@ -5,13 +5,13 @@
 }
 /* Color Variables */
 :root {
-  --primary-color: #f8ab7e;
-  --secondary-color: #009379;
-  --text-black-color: #2d2d2d;
-  --text-white-color: #fff;
-  --btn-color: #e5f4f2;
-  --header-bg-color: #e5f4f2;;
-  --bg-color: #e5f4f2;
+  --primary-color: #FFEE8C  !important;
+  --secondary-color: #5CC39A !important;
+  --text-black-color: #010101 !important;
+  --text-white-color: #fff !important;
+  --btn-color: #e5f4f2 !important;
+  --header-bg-color: #FFEE8C  !important;
+  --bg-color: #FFEE8C !important;
 }  
   .navbar {
     display: flex;
@@ -21,6 +21,8 @@
     padding: 20px;
     font-family: Poppins, sans-serif;
     position: fixed;
+    border: 1px solid transparent;
+    border-bottom-color: rgba(104, 104, 104, 0.678);
     width: 100%;
     transition: opacity 0.5s ease-in-out, height 0.3s ease-in-out;
   }
@@ -37,8 +39,8 @@
   }
   
   .logoImage {
-    width: 32px;
-    height: 32px;
+    width: 30%;
+    height: auto;
     object-fit: contain;
   }
   
@@ -48,13 +50,13 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 20px;
+    gap: 5px;
   }
   
 
   .secondaryButton,
   .primaryButton {
-    border-radius: 10px;
+    border-radius: 50px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -62,14 +64,14 @@
   
 
   .secondaryButton {
-    background-color: var(--btn-color);
-    color: var(--secondary-color);
+    color: var(--text-black-color);
     padding: 15px 50px;
-    border: 2px solid var(--secondary-color);
+    background-color:  var(--primary-color);
+    border: none;
   }
   
   .primaryButton {
-    background-color: var(--secondary-color);
+    background-color: var(--text-black-color);
     color: var(--text-white-color);
     padding: 15px 50px;
     border: none;
@@ -111,7 +113,7 @@
   }
   
   .heroDescription {
-    color: var(--text-white-color);
+    color: var(--text-black-color);
     font-size: 21px;
     line-height: 32px;
     font-family: Mulish, sans-serif;
@@ -489,7 +491,7 @@
 }
 
 .footer h3 {
-  color: #f8ab7e;
+  color: var(--primary-color);
   margin-bottom: 15px;
 }
 
@@ -509,7 +511,7 @@
 }
 
 .footerLinks ul li a:hover {
-  color: #f8ab7e;
+  color: var(--primary-color);
 }
 
 .footerContact p {
