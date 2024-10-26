@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadScreen from "./LoadScreen"; // Import LoadScreen component
 import LoadScreenResult from "./LoadScreenResult"; // Import LoadScreenResult component
-import introJs from 'intro.js'; // Import Intro.js
-import 'intro.js/introjs.css'; // Import Intro.js CSS
+import introJs from "intro.js"; // Import Intro.js
+import "intro.js/introjs.css"; // Import Intro.js CSS
 
 const StartMockInterviewPopup = ({
   isPopupVisible,
@@ -59,7 +59,7 @@ const StartMockInterviewPopup = ({
     const startCamera = async () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: { exact: "user" } },
+          video: { facingMode: "user" },
           audio: true,
         });
         if (videoRef.current) {
@@ -84,30 +84,31 @@ const StartMockInterviewPopup = ({
         intro.setOptions({
           steps: [
             {
-              element: '.record-btn',
-              intro: 'Click here to start recording your answer.',
-              position: 'left',
+              element: ".record-btn",
+              intro: "Click here to start recording your answer.",
+              position: "left",
             },
             {
-              element: '.timer',
-              intro: 'This is the timer. You have 2 minutes to answer each question.',
-              position: 'left',
+              element: ".timer",
+              intro:
+                "This is the timer. You have 2 minutes to answer each question.",
+              position: "left",
             },
             {
-              element: '.sample-question',
-              intro: 'Here is the question you need to answer.',
-              position: 'left',
+              element: ".sample-question",
+              intro: "Here is the question you need to answer.",
+              position: "left",
             },
             {
-              element: '#closePopupBtn',
-              intro: 'Click this to close the mock interview.',
-              position: 'left',
+              element: "#closePopupBtn",
+              intro: "Click this to close the mock interview.",
+              position: "left",
             },
           ],
           showBullets: false,
           overlayOpacity: 0.8,
-          tooltipClass: 'custom-tooltip',
-          buttonClass: 'custom-intro-button',
+          tooltipClass: "custom-tooltip",
+          buttonClass: "custom-intro-button",
         });
         intro.start();
         setHasIntroDisplayed(true);
@@ -123,13 +124,22 @@ const StartMockInterviewPopup = ({
       }
       clearInterval(timerRef.current);
     };
-  }, [isPopupVisible, currentQuestion, speakQuestion, hasSpoken, hasIntroDisplayed]);
+  }, [
+    isPopupVisible,
+    currentQuestion,
+    speakQuestion,
+    hasSpoken,
+    hasIntroDisplayed,
+  ]);
 
   const handleRecordButtonClick = useCallback(() => {
     const stream = videoRef.current.srcObject;
 
     if (isRecording) {
-      if (mediaRecorderRef.current && mediaRecorderRef.current.state !== "inactive") {
+      if (
+        mediaRecorderRef.current &&
+        mediaRecorderRef.current.state !== "inactive"
+      ) {
         mediaRecorderRef.current.stop();
         setIsRecording(false);
         clearInterval(timerRef.current);
@@ -231,7 +241,10 @@ const StartMockInterviewPopup = ({
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
+      2,
+      "0"
+    )}`;
   };
 
   const handleLoadComplete = () => {
@@ -247,7 +260,7 @@ const StartMockInterviewPopup = ({
   useEffect(() => {
     setPosition({
       x: 6, // Center left (0 for x)
-      y: 0 // Center vertically (adjusting for half height of the component)
+      y: 0, // Center vertically (adjusting for half height of the component)
     });
   }, []);
 
@@ -278,11 +291,11 @@ const StartMockInterviewPopup = ({
       <div
         className="tips-guides"
         style={{
-          position: 'absolute',
+          position: "absolute",
           zIndex: 1,
           left: position.x,
           top: position.y,
-          cursor: dragging ? 'grabbing' : 'grab',
+          cursor: dragging ? "grabbing" : "grab",
         }}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
@@ -294,15 +307,23 @@ const StartMockInterviewPopup = ({
         <p>🎥 Let's Get You Set Up!</p>
         <br />
         <p>
-          Before Your Interview: • Testing 1-2-3: Quick check of your camera and mic • Internet Check: Make sure your connection is steady and strong • Light it Right: Face a window or lamp to show off your best self • Quiet Zone: Find your perfect peaceful spot • Background Check: Keep it clean and simple behind you
+          Before Your Interview: • Testing 1-2-3: Quick check of your camera and
+          mic • Internet Check: Make sure your connection is steady and strong •
+          Light it Right: Face a window or lamp to show off your best self •
+          Quiet Zone: Find your perfect peaceful spot • Background Check: Keep
+          it clean and simple behind you
         </p>
         <br />
         <p>
-          Pro Tips: ✨ Do a test call with a friend ✨ Close unnecessary browser tabs ✨ Keep your device plugged in ✨ Have a backup plan (phone hotspot) ✨ Position your camera at eye level
+          Pro Tips: ✨ Do a test call with a friend ✨ Close unnecessary browser
+          tabs ✨ Keep your device plugged in ✨ Have a backup plan (phone
+          hotspot) ✨ Position your camera at eye level
         </p>
         <br />
         <p>
-          Remember: Being prepared helps you feel confident! Take 5 minutes to check these things, and you'll be ready to shine in your interview. You've got this! 🌟
+          Remember: Being prepared helps you feel confident! Take 5 minutes to
+          check these things, and you'll be ready to shine in your interview.
+          You've got this! 🌟
         </p>
         <br />
         <p>Need help? We're here to guide you through each step! 😊</p>
@@ -321,7 +342,12 @@ const StartMockInterviewPopup = ({
           {showLoadScreenResult && (
             <LoadScreenResult onLoadComplete={handleLoadComplete} />
           )}
-          <video ref={videoRef} autoPlay playsInline style={{ width: "100%" }} />
+          <video
+            ref={videoRef}
+            autoPlay
+            playsInline
+            style={{ width: "100%" }}
+          />
         </div>
 
         <div className="sample-question">
@@ -329,10 +355,13 @@ const StartMockInterviewPopup = ({
           <p>{question[currentQuestion]}</p>
         </div>
         <button onClick={handleRecordButtonClick} className="record-btn">
-          {isRecording ?  <i className="bx bx-stop"></i>: <i className="bx bx-microphone"></i>}
+          {isRecording ? (
+            <i className="bx bx-stop"></i>
+          ) : (
+            <i className="bx bx-microphone"></i>
+          )}
         </button>
       </div>
-      
     </div>
   ) : null;
 };
