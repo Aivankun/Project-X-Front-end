@@ -1,13 +1,13 @@
 /* Color Variables */
 :root {
-    --background-color: #f8ab7e;
+    --background-color: #FFEE8C;
     --light-background-color: #fae6dc;
     --tooltip-background: #fff;
     --tooltip-shadow: rgba(0, 0, 0, 0.3);
     --card-background: #fff;
     --option-background: #fbfafa;
-    --text-color: #fff;
-    --light-text-color: #f8ab7e;
+    --text-color: #000;
+    --light-text-color: #FFEE8C;
     --fade-container: rgba(0, 0, 0, 0.781);
     --fade-bg-container-upload: #ffbe98ca;
     --record-btn: #fd3b55;
