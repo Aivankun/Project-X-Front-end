@@ -136,7 +136,7 @@ const UploadResumePopUp = ({
                   <p className="selected-file">Selected File: {file.name}</p>
                 )}
                 {retrying && (
-                  <p className="warning-message">
+                  <p className="warning-message"> 
                     An error has occurred. Please upload your file again.
                   </p>
                 )}{" "}

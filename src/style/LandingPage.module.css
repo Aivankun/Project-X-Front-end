@@ -100,7 +100,8 @@
   }
   
   .heroHeader {
-    max-width: 40%;
+    max-width: 50%;
+    padding-left: 50px;
   }
   
   .heroTitle {

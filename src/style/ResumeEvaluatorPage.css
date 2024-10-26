@@ -1,3 +1,12 @@
+:root {
+  --primary-color: #FFEE8C  !important;
+  --secondary-color: #5CC39A !important;
+  --text-black-color: #010101 !important;
+  --text-white-color: #fff !important;
+  --btn-color: #e5f4f2 !important;
+  --header-bg-color: #FFEE8C  !important;
+  --bg-color: #FFEE8C !important;
+}  
 /*ResumeEvaluator Page*/
 .resume-evaluator-container{
     width: 100%;
@@ -14,7 +23,7 @@
     align-items: center;
 }
 .upload-area {
-  border: 2px dashed var(--fade-bg-container-upload);
+  border: 2px dashed var(--text-black-color);
   border-radius: 12px;
   padding: 20px;
   margin: 20px 0px 0px 0px;
@@ -48,13 +57,13 @@
 
 .upload-icon {
   font-size: 48px;
-  color: var(--light-text-color);
+  color: var(--text-black-color);
   margin-bottom: 15px;
 }
 
 .browse-btn {
-  background-color: var(--first-option-background);
-  color: var(--text-color);
+  background-color: var(--text-black-color);
+  color: var(--text-white-color);
   border: none;
   padding: 8px 16px;
   border-radius: 5px;
@@ -63,9 +72,6 @@
   font-size: 14px;
 }
 
-.browse-btn:hover {
-  background-color: var(--background-color);
-}
 
 .file-support {
   font-size: 12px;

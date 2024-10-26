@@ -5,7 +5,7 @@ const LoadScreen = () => {
   return (
     <div className="load-screen">
       <div className="loader"></div>
-      <p>Uploading your answer...</p>
+      <p>Loading Next Question</p>
     </div>
   );
 };

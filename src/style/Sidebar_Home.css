@@ -6,12 +6,12 @@
     --tooltip-shadow: rgba(0, 0, 0, 0.3);
     --card-background: #fff;
     --option-background: #fbfafa;
-    --text-color: #000gt;
+    --text-color: #000;
     --light-text-color: #FFEE8C;
     --fade-container: rgba(0, 0, 0, 0.781);
-    --fade-bg-container-upload: #ffbe98ca;
+    --fade-bg-container-upload: #FFEE8Cca;
     --record-btn: #fd3b55;
-    --first-option-background: #ffbe98;
+    --first-option-background: #FFEE8C;
     --second-option-background: #ff909f;
     --third-option-background: #59c3b0;
     --forth-option-background: #424141;
@@ -58,7 +58,12 @@
     opacity: 0;
     transition: all 0.5s ease;
 }
-
+.avatar > .logoImage {
+    width: 60%;
+    height: auto;
+    object-fit: contain;
+}
+  
 .sidebar.open .logo-details .icon,
 .sidebar.open .logo-details .avatar {
     opacity: 1;
@@ -291,7 +296,6 @@
     justify-content: flex-end;
     align-items: center;
     height: 66px;
-    padding: 0px 20px; /* Adjust as needed */
     background-color: var(--background-color);
     z-index: 1;
     position: fixed; /* Changed to fixed */
@@ -301,17 +305,18 @@
     transition: width 0.3s ease; /* Smooth transition for width change */
 }
 .user-info {
-    padding-right: 10px;
+    width: 150px;
+    height: 100%;
     display: flex;
     align-items: center;
-    position: relative; /* Needed for absolute positioning of dropdown */
+    justify-content: center;
 }
-.dropdown-menu {
+
+.user-info > .dropdown-menu {
     position: absolute;
     top: 100%; /* Position it below the user name */
-    right: 0; /* Align to the right */
     background-color: var(--option-background);
-    border: 1px solid #ccc;
+    border-radius: 15px;
     z-index: 1000; /* Make sure it appears on top */
     border: none;
 }
@@ -324,27 +329,20 @@
     transition: background-color 0.3s; /* Smooth transition */
     background: var(--background-color);
     color: var(--text-color);
-    
+    width: 150px;
 }
 
 .dropdown-item i {
     margin-right: 8px; /* Add space between icon and text */
     transition: color 0.3s; /* Smooth transition for icon color */
 }
-
-/* Hover effect */
-.dropdown-item:hover {
-    color: var(--light-text-color);
-    background-color: var(--light-background-color); /* Change background color on hover */
-}
-
-.dropdown-item:hover i {
-    color: var(--light-text-color); /* Change icon color on hover (you can change this color) */
-}
 .user-name {
+    width: 100%;
+    text-align: center;
     color: var(--text-color); /* Adjust this based on your theme */
     margin-right: 10px; /* Space between name and icons */
     font-weight: 600; /* You can adjust this */
+    margin: 0;
 }
 
 .user-info i {
@@ -366,8 +364,8 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 90%;
-    margin: 20px 20px 0px 20px;
+    max-width: 95%;
+    margin: 15px 15px 0px 15px;
     text-align: center;
     display: flex;
     flex-direction: column; /* Make sure to stack items vertically */
@@ -410,7 +408,7 @@
 }
 
 .option-card:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    transform: scale(1.01); /* Slightly enlarge on hover */
 }
 
 .option-card > .option-image {
@@ -453,9 +451,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position: relative; /* Keep this for positioning timer and record button */
     border-radius: 8px;
     width: 80%;
+    height: 90vh;
     max-width: 700px; /* Set a max-width for better responsiveness */
 }
 
@@ -471,11 +469,16 @@
 }
 
 .popup-content .sample-question {
-    margin-top: 10px;
-    font-size: 18px;
-    height: 50px;
+    font-size: 14px;
+    max-width: 100%;
+    text-align: center;
+    height: 100px; /* Set a fixed height */
 }
 
+.ans_q_a{
+    padding: 10px;
+    font-size: 15pt;
+}
 #closePopupBtn {
     font-size: 20pt;
     position: absolute;
@@ -483,30 +486,38 @@
     right: 10px;
     cursor: pointer;
 }
-
 .question-tracking {
     font-size: 1.2em; /* Adjust font size as needed */
-    margin-bottom: 10px; /* Space between question tracking and video */
     text-align: center; /* Center the text */
+    height: 50px; /* Set a fixed height */
+    width: 100%;
 }
- 
+
 #video {
     padding: 0;
     width: 100% !important;
     max-width: max-content;
-    height: 70vh !important;
+    max-height: 78% !important;
     border: none;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 78%; /* Set a fixed height */
+}
+
+#video > video {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    border: none;
+    padding: 0;
     background-color: #000;
-    position: relative; /* Keep this to ensure it overlays properly */
 }
 
 .timer {
     position: absolute;
-    top: 10%; /* Adjust as needed */
+    top: 17%; /* Adjust as needed */
     left: 50%;
     transform: translate(-50%, 0); /* Center horizontally */
     font-size: 20px;
@@ -519,7 +530,7 @@
 
 .record-btn , .stop-btn {
     position: absolute;
-    bottom: 25%; /* Adjust as needed */
+    bottom: 22%; /* Adjust as needed */
     left: 50%;
     transform: translate(-50%, 0); /* Center horizontally */
     background-color: var(--record-btn);
@@ -533,20 +544,7 @@
     outline: none;
 }
 
-.next-btn{
-    border: none;
-    text-decoration: underline var(--record-btn);
-    font-size: 24px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    background: none;
-    color: #000;
-}
-.next-btn > i {
-    font-size: 20px;
-}
+
 .times-up-message {
     display: flex;
     align-items: center;
@@ -562,12 +560,10 @@
     position: absolute; /* Position the loading screen absolutely */
     top: 0;
     left: 0; 
-    width: 100%; /* Full width of the video */
-    height: 100%; /* Full height of the video */
     display: flex; /* Use flexbox to center content */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-    z-index: 10; /* Ensure it appears above other content */
+    z-index: 1; /* Ensure it appears above other content */
     flex-direction: column;
     color: var(--light-background-color);
 }
@@ -587,6 +583,49 @@
     100% { transform: rotate(360deg); } /* End at 360 degrees */
   }
   
+  /* Custom tooltip styles */
+.custom-tooltip {
+    background-color: #4CAF50; /* Change tooltip background color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 10px 15px; /* Padding inside the tooltip */
+    font-size: 16px; /* Tooltip font size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition */
+  }
+  
+  /* Optional: Customize the arrow */
+  .custom-tooltip:after {
+    border-top-color: #4CAF50; /* Match the tooltip background color */
+  }
+  
+  /* Custom button styles */
+  .custom-intro-button {
+    background-color: var(--text-color); /* Change button background color */
+    color: #ffffff; /* Change button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding inside the button */
+    cursor: pointer; /* Change cursor to pointer */
+    font-size: 14px; /* Font size */
+    transition: background-color 0.5s ease-in-out; /* Smooth background color transition */
+  }
+  .custom-intro-button:hover{
+    transform: scale(1.01);
+  }
+  .tips-guides{
+    background-color: var(--option-background);
+    left: 0;
+    width: 300px;
+    height: auto;
+    padding: 20px;
+    margin-top: 50px;
+  }
+.tips-guides > p{
+    font-size: 10pt;
+
+}
+  /*Tips Guides*/
+
 /*Result Page*/
 .result-container {
     background-color: var(--card-background);
@@ -613,3 +652,4 @@
     display: none;
   }
 }
+

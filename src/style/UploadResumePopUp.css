@@ -1,3 +1,12 @@
+:root {
+  --primary-color: #FFEE8C  !important;
+  --secondary-color: #5CC39A !important;
+  --text-black-color: #010101 !important;
+  --text-white-color: #fff !important;
+  --btn-color: #e5f4f2 !important;
+  --header-bg-color: #FFEE8C  !important;
+  --bg-color: #FFEE8C !important;
+}  
 /*Upload form pop up*/
 .upload-container{
     position: fixed;

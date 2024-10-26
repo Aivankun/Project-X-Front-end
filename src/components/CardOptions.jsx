@@ -5,7 +5,7 @@ import img2 from '../assets/2.png';
 const CardOptions = ({ startMockInterview, openUploadPopup }) => {
   return (
     <div className="card" id="mockInterviewOptions">
-      <h2>Choose Job Carrier Interview</h2>
+      <h2>Select Professional Career Interview</h2>
       <div className="option-container">
         {/* Clickable Start Mock Interview Card */}
         <div onClick={startMockInterview} className="option-card">
@@ -17,9 +17,10 @@ const CardOptions = ({ startMockInterview, openUploadPopup }) => {
         {/* Clickable Upload Resume Card */}
         <div onClick={openUploadPopup} className="option-card">
           <img src={img1} alt='Resume Questionare' className="option-image" />
-          <p className='job-name'>Basic Resume Questionare</p>
+          <p className='job-name'>Basic Resume Questionnaire</p>
           <p className='no-of-question'>Upload a PDF or DOC file</p>
         </div>
+        
       </div>
     </div>
   );

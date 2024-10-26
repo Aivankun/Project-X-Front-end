@@ -22,7 +22,7 @@ const Result = () => {
         />
 
         <div className="result-container">
-          <h2>Interview Results</h2>
+          <h2>Questions Answered</h2>
           <p>Your interview results will be displayed here.</p>
           <div className="result-details">
             <p className='score'>0</p>

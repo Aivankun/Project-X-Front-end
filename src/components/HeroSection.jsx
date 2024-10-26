@@ -7,7 +7,7 @@ function HeroSection() {
     <section className={styles.heroSection}>
       <div className={styles.heroContent}>
         <div className={styles.heroHeader}>
-          <h1 className={styles.heroTitle}>The Newest AI Interview Helper</h1>
+          <h1 className={styles.heroTitle}>Shine at Interviews: Your Supportive AI Companion</h1>
           <p className={styles.heroDescription}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio et nesciunt nemo ratione exercitationem cum, dolorem nisi voluptatibus eligendi quas consequatur! Sapiente doloreur enim, tempora beatae eaque! Pariatur, labore!s aspernat
           </p>
