@@ -11,9 +11,10 @@ const MainDashboard = () => {
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [isUploadVisible, setUploadVisible] = useState(false);
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [isError] = useState(false); // Ensure this state is defined
+  // const [isError, ,setError] = useState(false); // Ensure this state is defined
   const videoRef = useRef(null);
-  const [firstQuestion, setFirstQuestion] = useState(""); // Initialize the state
+  // const [firstQuestion, setFirstQuestion] = useState(""); // Initialize the state
+  const [question, setQuestion] = useState([]); // Initialize the state
   const [isLoading, setLoading] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0); // State for current question
 
@@ -29,8 +30,8 @@ const MainDashboard = () => {
     setUploadVisible(false);
   };
 
-  const updateFirstQuestion = (question) => {
-    setFirstQuestion(question); // Update the state when the question is fetched
+  const updateQuestion = (question) => {
+    setQuestion(question); // Update the state when the question is fetched
     setLoading(false); // Stop loading when question is ready
     closeUploadPopup(); // Close the upload popup after fetching the question
     setPopupVisible(true); // Open mock interview popup when the first question is available
@@ -57,7 +58,7 @@ const MainDashboard = () => {
         isPopupVisible={isPopupVisible}
         closePopup={closePopup}
         videoRef={videoRef}
-        firstQuestion={firstQuestion}
+        question={question}
         currentQuestion={currentQuestion} // Pass current question
         setCurrentQuestion={setCurrentQuestion} // Pass setter function
       />
@@ -65,9 +66,9 @@ const MainDashboard = () => {
       <UploadResumePopUp
         isVisible={isUploadVisible}
         closePopup={closeUploadPopup}
-        isError={isError} // Pass the error state if needed
+        // isError={isError} // Pass the error state if needed
         startMockInterview={startMockInterview} // Pass the function here
-        updateFirstQuestion={updateFirstQuestion}
+        updateQuestion={updateQuestion}
         setLoading={setLoading} // Set loading state from here
         isLoading={isLoading} // Pass loading state to the child
       />

@@ -1,100 +1,106 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
 
-  }
-  
-  /* Color Variables */
-  :root {
-    --primary-color: #F5F88F !important;
+/* Color Variables */
+:root {
+  /* --primary-color: #F5F88F !important;
     --secondary-color: #5CC39A !important;
     --text-black-color: #010101 !important;
     --text-white-color: #fff !important;
     --btn-color: #eef5f4 !important;
     --header-bg-color: #F5F88F !important;
-    --bg-color: #F5F88F!important;
-  }  
-  
-  .registerSection {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--bg-color);
-  }
+    --bg-color: #F5F88F!important; */
 
-  .registerContainer {
-    width: 30%;
-    max-width: 500px;
-    margin: auto;
-    padding: 2rem;
-    border: 1px solid var(--btn-color);
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    background-color: var(--text-white-color);
-  }
-  
-  .inputGroup {
-    width: 100%;
-    display: block;
-    text-align: left;
-  }
-  
-  .inputField {
-    width: 95%;
-    padding: 0.5rem;
-    margin-top: 0.3rem;
-    border-radius: 4px;
-    border: 1px solid var(--btn-color);
-  }
-  
-  .required {
-    color: red;
-  }
-  
-  .registerButton {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: var(--text-black-color);
-    color: var(--text-white-color);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .googleButton {
-    background-color: var(--btn-color);
-    color: var(--text-black-color);
-    border: 1px solid var(--text-black-color);
-    padding: 0.75rem;
-    width: 100%;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  .googleicon {
-    height: 20px;
-  }
-  
-  .forgotPassword {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .linkButton {
-    border: none;
-    background: none;
-    cursor: pointer;
-    text-decoration: underline;
-    color: var(--secondary-color);
-  }
-  
+  --primary-color: #ffee8c !important;
+  --secondary-color: #5cc39a !important;
+  --text-black-color: #010101 !important;
+  --text-white-color: #fff !important;
+  --btn-color: #e5f4f2 !important;
+  --header-bg-color: #ffee8c !important;
+  --bg-color: #ffee8c !important;
+}
+
+.registerSection {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+}
+
+.registerContainer {
+  width: 30%;
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem;
+  border: 1px solid var(--btn-color);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  background-color: var(--text-white-color);
+}
+
+.inputGroup {
+  width: 100%;
+  display: block;
+  text-align: left;
+}
+
+.inputField {
+  width: 95%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border-radius: 4px;
+  border: 1px solid var(--btn-color);
+}
+
+.required {
+  color: red;
+}
+
+.registerButton {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--text-black-color);
+  color: var(--text-white-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.googleButton {
+  background-color: var(--btn-color);
+  color: var(--text-black-color);
+  border: 1px solid var(--text-black-color);
+  padding: 0.75rem;
+  width: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.googleicon {
+  height: 20px;
+}
+
+.forgotPassword {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.linkButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+  color: var(--secondary-color);
+}

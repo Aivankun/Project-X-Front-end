@@ -1,11 +1,18 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import LoadScreen from "./LoadScreen"; // Import LoadScreen component
 import LoadScreen from './LoadScreen'; // Import LoadScreen component
 import introJs from 'intro.js'; // Import Intro.js
 import 'intro.js/introjs.css'; // Import Intro.js CSS
 
-const StartMockInterviewPopup = ({ isPopupVisible, closePopup, firstQuestion, currentQuestion, setCurrentQuestion }) => {
+const StartMockInterviewPopup = ({
+  isPopupVisible,
+  closePopup,
+  question,
+  currentQuestion,
+  setCurrentQuestion,
+}) => {
   const videoRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const recordedChunksRef = useRef([]);
@@ -18,6 +25,13 @@ const StartMockInterviewPopup = ({ isPopupVisible, closePopup, firstQuestion, cu
   const [hasIntroDisplayed, setHasIntroDisplayed] = useState(false); // State to track intro display
   const navigate = useNavigate();
 
+  // const questions = [
+  //   question,
+  //   "What are the main differences between class and id selectors in CSS?",
+  //   "Explain the box model in CSS?",
+  //   "What is a responsive web design?",
+  //   "What is the purpose of JavaScript in web development?",
+  // ];
   const questions = [
     firstQuestion,
     "What are the main differences between class and id selectors in CSS?",
@@ -26,7 +40,7 @@ const StartMockInterviewPopup = ({ isPopupVisible, closePopup, firstQuestion, cu
     "What is the purpose of JavaScript in web development?",
   ];
 
-  const totalQuestions = questions.length;
+  const totalQuestions = question.length;
   const questionTimeLimit = 120; // 2 minutes per question
 
   const speakQuestion = useCallback((text) => {
@@ -77,7 +91,7 @@ const StartMockInterviewPopup = ({ isPopupVisible, closePopup, firstQuestion, cu
       startCamera();
       setTimeElapsed(0);
       if (!hasSpoken) {
-        speakQuestion(questions[currentQuestion]); // Speak the question only if it hasn't been spoken
+        speakQuestion(question[currentQuestion]); // Speak the question only if it hasn't been spoken
         setHasSpoken(true); // Mark the question as spoken
       }
       
@@ -133,7 +147,10 @@ const StartMockInterviewPopup = ({ isPopupVisible, closePopup, firstQuestion, cu
     const stream = videoRef.current.srcObject;
 
     if (isRecording) {
-      if (mediaRecorderRef.current && mediaRecorderRef.current.state !== "inactive") {
+      if (
+        mediaRecorderRef.current &&
+        mediaRecorderRef.current.state !== "inactive"
+      ) {
         mediaRecorderRef.current.stop();
         setIsRecording(false);
         clearInterval(timerRef.current);
@@ -182,10 +199,10 @@ const StartMockInterviewPopup = ({ isPopupVisible, closePopup, firstQuestion, cu
       const blob = new Blob(recordedChunksRef.current, { type: "video/webm" });
       const formData = new FormData();
       formData.append("videoFile", blob, `question${currentQuestion + 1}.webm`);
-      formData.append("question", questions[currentQuestion]);
+      formData.append("question", question[currentQuestion]);
 
       const response = await axios.post(
-        "http://localhost:5000/api/mockInterview",
+        "http://localhost:5000/api/mockInterview",  
         formData,
         {
           headers: {
@@ -220,12 +237,22 @@ const StartMockInterviewPopup = ({ isPopupVisible, closePopup, firstQuestion, cu
         handleNextQuestion();
       }
     }
-  }, [timeElapsed, handleRecordButtonClick, handleNextQuestion, currentQuestion, totalQuestions, isRecording]);
+  }, [
+    timeElapsed,
+    handleRecordButtonClick,
+    handleNextQuestion,
+    currentQuestion,
+    totalQuestions,
+    isRecording,
+  ]);
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
+      2,
+      "0"
+    )}`;
   };
 
   return isPopupVisible ? (
@@ -239,15 +266,21 @@ const StartMockInterviewPopup = ({ isPopupVisible, closePopup, firstQuestion, cu
           Question {currentQuestion + 1}/{totalQuestions}
         </div>
 
-        <div style={{ position: 'relative', maxWidth: '100%', height: 'auto' }}>
-          <video id="video" ref={videoRef} autoPlay style={{ width: '100%', height: 'auto' }}></video>
-          {isLoading && <LoadScreen />} {/* Show loading screen when isLoading is true */}
+        <div style={{ position: "relative", maxWidth: "100%", height: "auto" }}>
+          <video
+            id="video"
+            ref={videoRef}
+            autoPlay
+            style={{ width: "100%", height: "auto" }}
+          ></video>
+          {isLoading && <LoadScreen />}{" "}
+          {/* Show loading screen when isLoading is true */}
         </div>
 
         <div className="avatar">AVATAR</div>
         <div className="sample-question">
           {currentQuestion < totalQuestions
-            ? ` ${questions[currentQuestion]}`
+            ? ` ${question[currentQuestion]}`
             : "Sample Result: You completed the interview!"}
         </div>
         <button className="record-btn" onClick={handleRecordButtonClick}>
