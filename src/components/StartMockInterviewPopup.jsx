@@ -100,19 +100,38 @@ const StartMockInterviewPopup = ({
               position: "left",
             },
             {
-              element: "#closePopupBtn",
-              intro: "Click this to close the mock interview.",
-              position: "left",
+              element: '#closePopupBtn',
+              intro: 'Click this to close the mock interview.',
+              position: 'left',
+            },
+            {
+              intro: `
+                🎥 <b>Quick Tips for Your Interview!</b><br>
+                <br>
+                <p>Here are some tips to help you have a great Interview</p><br>
+                <ul>
+
+                  <li>Ensure your camera and microphone are working properly</li><br>
+                  <li>Find a quiet place with good lighting</li><br>
+                  <li>Maintain eye contact with the camera</li><br>
+                  <li>Speak clearly and at a moderate pace</li><br><br>
+                </ul>
+              `,
+              position: 'center',
+              tooltipClass: 'custom-tooltip-last custom-width-500', // Custom class for last step
             },
           ],
           showBullets: false,
           overlayOpacity: 0.8,
-          tooltipClass: "custom-tooltip",
-          buttonClass: "custom-intro-button",
+          tooltipClass: 'custom-tooltip',
+          buttonClass: 'custom-intro-button',
+          doneLabel: 'Got It', // Label for final button
         });
+               
         intro.start();
         setHasIntroDisplayed(true);
       }
+      
     }
 
     const currentVideoRef = videoRef.current;
@@ -251,83 +270,9 @@ const StartMockInterviewPopup = ({
     navigate("/result"); // Navigate to the result page after loading
   };
 
-  //Tips and Guides
-  const [isVisible, setIsVisible] = useState(true);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [dragging, setDragging] = useState(false);
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    setPosition({
-      x: 6, // Center left (0 for x)
-      y: 0, // Center vertically (adjusting for half height of the component)
-    });
-  }, []);
-
-  const handleMouseDown = (e) => {
-    setDragging(true);
-    setOffset({
-      x: e.clientX - position.x,
-      y: e.clientY - position.y,
-    });
-  };
-
-  const handleMouseUp = () => {
-    setDragging(false);
-  };
-
-  const handleMouseMove = (e) => {
-    if (dragging) {
-      setPosition({
-        x: e.clientX - offset.x,
-        y: e.clientY - offset.y,
-      });
-    }
-  };
-
-  if (!isVisible) return null;
   return isPopupVisible ? (
     <div className="popup-container" style={{ display: "flex" }}>
-      <div
-        className="tips-guides"
-        style={{
-          position: "absolute",
-          zIndex: 1,
-          left: position.x,
-          top: position.y,
-          cursor: dragging ? "grabbing" : "grab",
-        }}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseUp} // Stop dragging when mouse leaves
-      >
-        <h3>Tips and Guides</h3>
-        <br />
-        <p>🎥 Let's Get You Set Up!</p>
-        <br />
-        <p>
-          Before Your Interview: • Testing 1-2-3: Quick check of your camera and
-          mic • Internet Check: Make sure your connection is steady and strong •
-          Light it Right: Face a window or lamp to show off your best self •
-          Quiet Zone: Find your perfect peaceful spot • Background Check: Keep
-          it clean and simple behind you
-        </p>
-        <br />
-        <p>
-          Pro Tips: ✨ Do a test call with a friend ✨ Close unnecessary browser
-          tabs ✨ Keep your device plugged in ✨ Have a backup plan (phone
-          hotspot) ✨ Position your camera at eye level
-        </p>
-        <br />
-        <p>
-          Remember: Being prepared helps you feel confident! Take 5 minutes to
-          check these things, and you'll be ready to shine in your interview.
-          You've got this! 🌟
-        </p>
-        <br />
-        <p>Need help? We're here to guide you through each step! 😊</p>
-      </div>
+
       <div className="popup-content">
         <i className="bx bx-x" id="closePopupBtn" onClick={closePopup}></i>
         <div className="timer" id="timer">
@@ -351,8 +296,8 @@ const StartMockInterviewPopup = ({
         </div>
 
         <div className="sample-question">
-          <p className="ans_q_a">Answer the Interview Question</p>
-          <p>{question[currentQuestion]}</p>
+          <p className="ans_q_a">Interview Question</p>
+          <p className="questions">{question[currentQuestion]}</p>
         </div>
         <button onClick={handleRecordButtonClick} className="record-btn">
           {isRecording ? (
@@ -362,6 +307,7 @@ const StartMockInterviewPopup = ({
           )}
         </button>
       </div>
+
     </div>
   ) : null;
 };

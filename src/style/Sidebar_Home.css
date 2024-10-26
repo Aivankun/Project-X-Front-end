@@ -443,7 +443,6 @@
     z-index: 100;
 }
 
-
 .popup-content {
     background: #fff;
     padding: 20px;
@@ -452,9 +451,10 @@
     align-items: center;
     flex-direction: column;
     border-radius: 8px;
-    width: 80%;
-    height: 90vh;
-    max-width: 700px; /* Set a max-width for better responsiveness */
+    width: 75%;
+    height: 85vh;
+    max-width: 600px; /* Set a max-width for better responsiveness */
+    position: relative;
 }
 
 .popup-content video {
@@ -470,15 +470,26 @@
 
 .popup-content .sample-question {
     font-size: 14px;
-    max-width: 100%;
     text-align: center;
-    height: 100px; /* Set a fixed height */
+    width: 100%;
+    height: 300px; /* Set a fixed height */
+    max-width: 100%;
+    word-wrap: break-word;
+    position: relative;
 }
 
-.ans_q_a{
+.sample-question > .question {
+    width: 100% !important;
+    height: 500px;
+    
+}
+
+.ans_q_a {
     padding: 10px;
     font-size: 15pt;
+    font-weight: 500;
 }
+
 #closePopupBtn {
     font-size: 20pt;
     position: absolute;
@@ -486,24 +497,24 @@
     right: 10px;
     cursor: pointer;
 }
+
 .question-tracking {
     font-size: 1.2em; /* Adjust font size as needed */
     text-align: center; /* Center the text */
-    height: 50px; /* Set a fixed height */
     width: 100%;
+    height: 50px; /* Set a fixed height */
 }
 
 #video {
     padding: 0;
-    width: 100% !important;
-    max-width: max-content;
-    max-height: 78% !important;
+    width: 95% !important;
+    max-width: 100%;
     border: none;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 78%; /* Set a fixed height */
+    height: 500px; /* Set a fixed height */
 }
 
 #video > video {
@@ -515,9 +526,10 @@
     background-color: #000;
 }
 
+
 .timer {
     position: absolute;
-    top: 17%; /* Adjust as needed */
+    top: 10%; /* Adjust as needed */
     left: 50%;
     transform: translate(-50%, 0); /* Center horizontally */
     font-size: 20px;
@@ -530,7 +542,7 @@
 
 .record-btn , .stop-btn {
     position: absolute;
-    bottom: 22%; /* Adjust as needed */
+    bottom: 25%; /* Adjust as needed */
     left: 50%;
     transform: translate(-50%, 0); /* Center horizontally */
     background-color: var(--record-btn);
@@ -583,6 +595,24 @@
     100% { transform: rotate(360deg); } /* End at 360 degrees */
   }
   
+  .custom-width-500 {
+    max-width: 400px !important;
+    width: 400px !important;
+    padding: 20px; /* Adds padding for readability */
+    line-height: 1.5; /* Spacing between lines */
+    font-size: 15px; /* Customize font size */
+  }
+  /* Style for the last step tooltip button */
+.custom-tooltip-last .introjs-prevbutton {
+    display: none; /* Hide the "Back" button */
+  }
+  .custom-tooltip-last .introjs-donebutton {
+    width: 100%; /* Set the "Got It" button to 100% width */
+    text-align: center;
+    font-weight: bold;
+    background-color: var(--text-color); /* Customize button color */
+    color: white; /* Text color */
+  }
   /* Custom tooltip styles */
 .custom-tooltip {
     background-color: #4CAF50; /* Change tooltip background color */
@@ -612,19 +642,6 @@
   .custom-intro-button:hover{
     transform: scale(1.01);
   }
-  .tips-guides{
-    background-color: var(--option-background);
-    left: 0;
-    width: 300px;
-    height: auto;
-    padding: 20px;
-    margin-top: 50px;
-  }
-.tips-guides > p{
-    font-size: 10pt;
-
-}
-  /*Tips Guides*/
 
 /*Result Page*/
 .result-container {
