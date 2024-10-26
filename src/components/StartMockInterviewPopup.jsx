@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadScreen from "./LoadScreen"; // Import LoadScreen component
-import LoadScreen from './LoadScreen'; // Import LoadScreen component
 import introJs from 'intro.js'; // Import Intro.js
 import 'intro.js/introjs.css'; // Import Intro.js CSS
 
@@ -32,13 +31,13 @@ const StartMockInterviewPopup = ({
   //   "What is a responsive web design?",
   //   "What is the purpose of JavaScript in web development?",
   // ];
-  const questions = [
-    firstQuestion,
-    "What are the main differences between class and id selectors in CSS?",
-    "Explain the box model in CSS?",
-    "What is responsive web design?",
-    "What is the purpose of JavaScript in web development?",
-  ];
+  // const questions = [
+  //   firstQuestion,
+  //   "What are the main differences between class and id selectors in CSS?",
+  //   "Explain the box model in CSS?",
+  //   "What is responsive web design?",
+  //   "What is the purpose of JavaScript in web development?",
+  // ];
 
   const totalQuestions = question.length;
   const questionTimeLimit = 120; // 2 minutes per question
