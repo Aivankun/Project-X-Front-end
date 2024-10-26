@@ -1,0 +1,655 @@
+/* Color Variables */
+:root {
+    --background-color: #FFEE8C;
+    --light-background-color: #fae6dc;
+    --tooltip-background: #fff;
+    --tooltip-shadow: rgba(0, 0, 0, 0.3);
+    --card-background: #fff;
+    --option-background: #fbfafa;
+    --text-color: #000;
+    --light-text-color: #FFEE8C;
+    --fade-container: rgba(0, 0, 0, 0.781);
+    --fade-bg-container-upload: #FFEE8Cca;
+    --record-btn: #fd3b55;
+    --first-option-background: #FFEE8C;
+    --second-option-background: #ff909f;
+    --third-option-background: #59c3b0;
+    --forth-option-background: #424141;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 78px;
+    background: var(--background-color);
+    padding: 6px 14px;
+    z-index: 99;
+    transition: all 0.5s ease;
+}
+
+.sidebar.open {
+    width: 250px;
+}
+
+.sidebar .logo-details {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.sidebar .logo-details .icon {
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.sidebar .logo-details .avatar {
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+.avatar > .logoImage {
+    width: 60%;
+    height: auto;
+    object-fit: contain;
+}
+  
+.sidebar.open .logo-details .icon,
+.sidebar.open .logo-details .avatar {
+    opacity: 1;
+}
+
+.sidebar .logo-details #btn {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 22px;
+    transition: all 0.4s ease;
+    font-size: 23px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.sidebar.open .logo-details #btn {
+    text-align: right;
+}
+
+.sidebar i {
+    color: var(--text-color);
+    height: 60px;
+    min-width: 50px;
+    font-size: 28px;
+    text-align: center;
+    line-height: 60px;
+}
+
+.sidebar .nav-list {
+    margin-top: 20px;
+    height: 100%;
+}
+
+.sidebar li {
+    position: relative;
+    margin: 8px 0;
+    list-style: none;
+}
+
+.sidebar li .tooltip {
+    position: absolute;
+    top: -20px;
+    left: calc(100% + 15px);
+    z-index: 3;
+    background: var(--tooltip-background);
+    box-shadow: 0 5px 10px var(--tooltip-shadow);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 400;
+    opacity: 0;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: 0s;
+}
+
+.sidebar li:hover .tooltip {
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.4s ease;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sidebar.open li .tooltip {
+    display: none;
+}
+
+.sidebar input {
+    font-size: 15px;
+    color: var(--text-color);
+    font-weight: 400;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    width: 50px;
+    border: none;
+    border-radius: 12px;
+    transition: all 0.5s ease;
+    background: #1d1b31; /* Consider converting this to a variable as well */
+}
+
+.sidebar.open input {
+    padding: 0 20px 0 50px;
+    width: 100%;
+}
+
+.sidebar .bx-search {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 22px;
+    background: #1d1b31; /* Consider converting this to a variable as well */
+    color: var(--text-color);
+}
+
+.sidebar.open .bx-search:hover {
+    background: #1d1b31; /* Consider converting this to a variable as well */
+    color: var(--text-color);
+}
+
+.sidebar .bx-search:hover {
+    background: var(--tooltip-background);
+    color: var(--light-text-color);
+}
+
+.sidebar li a {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border-radius: 12px;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    background: var(--background-color);
+}
+
+.sidebar li a:hover {
+    background: var(--tooltip-background);
+}
+
+.sidebar li a .links_name {
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: 400;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s;
+}
+
+.sidebar.open li a .links_name {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sidebar li a:hover .links_name,
+.sidebar li a:hover i {
+    transition: all 0.5s ease;
+    color: var(--light-text-color);
+}
+
+.sidebar li i {
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    border-radius: 12px;
+}
+
+.sidebar li.profile {
+    position: fixed;
+    height: 60px;
+    width: 78px;
+    left: 0;
+    bottom: -8px;
+    padding: 10px 14px;
+    background: var(--background-color); /* Consider converting this to a variable as well */
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+.sidebar.open li.profile {
+    width: 250px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+}
+
+
+.sidebar li img {
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+.sidebar li.profile .name {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text-color);
+    white-space: nowrap;
+}
+
+.sidebar .profile #log_out {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: var(--background-color); /* Consider converting this to a variable as well */
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 0px;
+    transition: all 0.5s ease;
+}
+
+.sidebar.open .profile #log_out {
+    width: 50px;
+    background:  var(--background-color);
+}
+/* Home Section */
+.home-section {
+    position: relative;
+    background: var(--light-background-color);
+    min-height: 100vh; /* Adjust height to account for header */
+    top: 0;
+    left: 78px;
+    width: calc(100% - 78px);
+    transition: all 0.5s ease;
+    z-index: 2;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.sidebar.open ~ .home-section {
+    left: 250px;
+    width: calc(100% - 250px);
+}
+
+
+.header-home {
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 66px;
+    background-color: var(--background-color);
+    z-index: 1;
+    position: fixed; /* Changed to fixed */
+    top: 0; /* Position it at the top */
+    left: 0; /* Align to the left edge */
+    width: calc(100%); /* Adjust this value based on your sidebar width */
+    transition: width 0.3s ease; /* Smooth transition for width change */
+}
+.user-info {
+    width: 150px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-info > .dropdown-menu {
+    position: absolute;
+    top: 100%; /* Position it below the user name */
+    background-color: var(--option-background);
+    border-radius: 15px;
+    z-index: 1000; /* Make sure it appears on top */
+    border: none;
+}
+
+.dropdown-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center icons and text vertically */
+    transition: background-color 0.3s; /* Smooth transition */
+    background: var(--background-color);
+    color: var(--text-color);
+    width: 150px;
+}
+
+.dropdown-item i {
+    margin-right: 8px; /* Add space between icon and text */
+    transition: color 0.3s; /* Smooth transition for icon color */
+}
+.user-name {
+    width: 100%;
+    text-align: center;
+    color: var(--text-color); /* Adjust this based on your theme */
+    margin-right: 10px; /* Space between name and icons */
+    font-weight: 600; /* You can adjust this */
+    margin: 0;
+}
+
+.user-info i {
+    font-size: 22px; /* Icon size */
+    color: var(--text-color); /* Adjust this based on your theme */
+    margin-left: 15px; /* Space between icons */
+    cursor: pointer; /* Pointer on hover */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.user-info i:hover {
+    color: var(--light-text-color); /* Hover color */
+}
+
+/* Mock Interview Card */
+.card {
+    height: 80vh;
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 95%;
+    margin: 15px 15px 0px 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Make sure to stack items vertically */
+}
+
+.option-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.option-card {
+    width: 23%; /* Full width for better responsiveness */
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--option-background);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0;
+    color: var(--text-color);
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* Smooth transition for scale */
+}
+/* Different background colors for each card */
+.option-card:nth-child(1) {
+    background-color: var(--first-option-background); /* Example for first option */
+}
+
+.option-card:nth-child(2) {
+    background-color: var(--second-option-background); /* Example for second option */
+}
+.option-card:nth-child(3) {
+    background-color: var(--third-option-background); /* Example for second option */
+}
+.option-card:nth-child(4) {
+    background-color: var(--forth-option-background); /* Example for second option */
+}
+
+.option-card:hover {
+    transform: scale(1.01); /* Slightly enlarge on hover */
+}
+
+.option-card > .option-image {
+    width: 60%; /* Adjust the size as necessary */
+    height: auto; /* Adjust the size as necessary */
+    margin-right: 10px; /* Space between image and button */
+}
+.job-name{
+    font-weight: bold;
+    text-align: left;
+    height: 60px;
+    width: 100%; 
+}
+.option-card > .no-of-question {
+    display: block;
+    text-align: left; /* Ensure text aligns to the left */
+    font-size: 8pt;
+    width: 100%; /* Set width to ensure it takes the full width of the card */
+}
+
+/* Popup container */
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--fade-container);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+    width: 80%;
+    height: 90vh;
+    max-width: 700px; /* Set a max-width for better responsiveness */
+}
+
+.popup-content video {
+    width: 100%; /* Make the video responsive */
+    height: auto;
+    padding: 10px;
+}
+
+.popup-content .avatar {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.popup-content .sample-question {
+    font-size: 14px;
+    max-width: 100%;
+    text-align: center;
+    height: 100px; /* Set a fixed height */
+}
+
+.ans_q_a{
+    padding: 10px;
+    font-size: 15pt;
+}
+#closePopupBtn {
+    font-size: 20pt;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.question-tracking {
+    font-size: 1.2em; /* Adjust font size as needed */
+    text-align: center; /* Center the text */
+    height: 50px; /* Set a fixed height */
+    width: 100%;
+}
+
+#video {
+    padding: 0;
+    width: 100% !important;
+    max-width: max-content;
+    max-height: 78% !important;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 78%; /* Set a fixed height */
+}
+
+#video > video {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    border: none;
+    padding: 0;
+    background-color: #000;
+}
+
+.timer {
+    position: absolute;
+    top: 17%; /* Adjust as needed */
+    left: 50%;
+    transform: translate(-50%, 0); /* Center horizontally */
+    font-size: 20px;
+    color: white;
+    background-color: var(--fade-container);
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1; /* Ensure it overlays over other elements */
+}
+
+.record-btn , .stop-btn {
+    position: absolute;
+    bottom: 22%; /* Adjust as needed */
+    left: 50%;
+    transform: translate(-50%, 0); /* Center horizontally */
+    background-color: var(--record-btn);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    outline: none;
+}
+
+
+.times-up-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55pt;
+    width: 100%;
+    height: 60vh;
+    border-radius: 8px;
+    background-color: var(--fade-container);
+    color: var(--light-text-color);
+}
+.load-screen {
+    position: absolute; /* Position the loading screen absolutely */
+    top: 0;
+    left: 0; 
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 1; /* Ensure it appears above other content */
+    flex-direction: column;
+    color: var(--light-background-color);
+}
+  
+  .loading-spinner {
+    border: 8px solid #f3f3f3; /* Light grey background */
+    border-top: 8px solid var(--background-color); /* Blue spinner */
+    border-radius: 50%; /* Round spinner */
+    width: 50px; /* Spinner width */
+    height: 50px; /* Spinner height */
+    animation: spin 1s linear infinite; /* Animation properties */
+}
+  
+  /* Keyframes for spinner animation */
+  @keyframes spin {
+    0% { transform: rotate(0deg); } /* Start at 0 degrees */
+    100% { transform: rotate(360deg); } /* End at 360 degrees */
+  }
+  
+  /* Custom tooltip styles */
+.custom-tooltip {
+    background-color: #4CAF50; /* Change tooltip background color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 10px 15px; /* Padding inside the tooltip */
+    font-size: 16px; /* Tooltip font size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition */
+  }
+  
+  /* Optional: Customize the arrow */
+  .custom-tooltip:after {
+    border-top-color: #4CAF50; /* Match the tooltip background color */
+  }
+  
+  /* Custom button styles */
+  .custom-intro-button {
+    background-color: var(--text-color); /* Change button background color */
+    color: #ffffff; /* Change button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding inside the button */
+    cursor: pointer; /* Change cursor to pointer */
+    font-size: 14px; /* Font size */
+    transition: background-color 0.5s ease-in-out; /* Smooth background color transition */
+  }
+  .custom-intro-button:hover{
+    transform: scale(1.01);
+  }
+  .tips-guides{
+    background-color: var(--option-background);
+    left: 0;
+    width: 300px;
+    height: auto;
+    padding: 20px;
+    margin-top: 50px;
+  }
+.tips-guides > p{
+    font-size: 10pt;
+
+}
+  /*Tips Guides*/
+
+/*Result Page*/
+.result-container {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    height: 100vh;
+    margin: 20px 20px 0px 20px;
+    text-align: center;
+}
+  
+.result-details {
+    margin-top: 10px;
+    padding: 10px;
+}
+.score{
+    font-size: 55pt;
+}
+
+
+@media (max-width: 420px) {
+  .sidebar li .tooltip{
+    display: none;
+  }
+}
+

@@ -1,0 +1,52 @@
+:root {
+  --primary-color: #FFEE8C  !important;
+  --secondary-color: #5CC39A !important;
+  --text-black-color: #010101 !important;
+  --text-white-color: #fff !important;
+  --btn-color: #e5f4f2 !important;
+  --header-bg-color: #FFEE8C  !important;
+  --bg-color: #FFEE8C !important;
+}  
+/*Upload form pop up*/
+.upload-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--fade-container);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.upload-popup {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the popup */
+  background: white; /* White background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  padding: 20px;
+  z-index: 1000; /* Ensure it sits above other content */
+  width: 700px; /* Set a fixed width */
+}
+.close-popup {
+  background: none; /* No background */
+  border: none; /* No border */
+  color: #f44336; /* Red color for the close icon */
+  font-size: 24px; /* Size of the icon */
+  cursor: pointer; /* Pointer on hover */
+  position: absolute; /* Positioning for the icon */
+  top: 10px; /* Distance from the top */
+  right: 10px; /* Distance from the right */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.close-popup:hover {
+  color: #d32f2f; /* Darker red on hover */
+}
