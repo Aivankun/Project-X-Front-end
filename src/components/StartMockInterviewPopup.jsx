@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadScreen from "./LoadScreen"; // Import LoadScreen component
+import introJs from 'intro.js'; // Import Intro.js
+import 'intro.js/introjs.css'; // Import Intro.js CSS
 
 const StartMockInterviewPopup = ({
   isPopupVisible,
@@ -19,6 +21,7 @@ const StartMockInterviewPopup = ({
   const [isTimesUp, setIsTimesUp] = useState(false);
   const [isLoading, setIsLoading] = useState(false); // State to control loading screen
   const [hasSpoken, setHasSpoken] = useState(false); // State to track if question has been spoken
+  const [hasIntroDisplayed, setHasIntroDisplayed] = useState(false); // State to track intro display
   const navigate = useNavigate();
 
   // const questions = [
@@ -26,6 +29,13 @@ const StartMockInterviewPopup = ({
   //   "What are the main differences between class and id selectors in CSS?",
   //   "Explain the box model in CSS?",
   //   "What is a responsive web design?",
+  //   "What is the purpose of JavaScript in web development?",
+  // ];
+  // const questions = [
+  //   firstQuestion,
+  //   "What are the main differences between class and id selectors in CSS?",
+  //   "Explain the box model in CSS?",
+  //   "What is responsive web design?",
   //   "What is the purpose of JavaScript in web development?",
   // ];
 
@@ -83,6 +93,42 @@ const StartMockInterviewPopup = ({
         speakQuestion(question[currentQuestion]); // Speak the question only if it hasn't been spoken
         setHasSpoken(true); // Mark the question as spoken
       }
+      
+      // Start Intro.js only if it hasn't been displayed yet
+      if (!hasIntroDisplayed) {
+        const intro = introJs();
+        intro.setOptions({
+          steps: [
+            {
+              element: '.record-btn',
+              intro: 'Click here to start recording your answer.',
+              position: 'bottom',
+            },
+            {
+              element: '.timer',
+              intro: 'This is the timer. You have 2 minutes to answer each question.',
+              position: 'top',
+            },
+            {
+              element: '.sample-question',
+              intro: 'Here is the question you need to answer.',
+              position: 'right',
+            },
+            {
+              element: '#closePopupBtn',
+              intro: 'Click this to close the mock interview.',
+              position: 'left',
+            },
+          ],
+          showBullets: false,
+          overlayOpacity: 0.8,
+          tooltipClass: 'custom-tooltip', // Add custom tooltip class
+          buttonClass: 'custom-intro-button', // Add custom button class
+        });
+        intro.start();
+        setHasIntroDisplayed(true);
+      }
+      
     }
 
     const currentVideoRef = videoRef.current;
@@ -94,7 +140,7 @@ const StartMockInterviewPopup = ({
       }
       clearInterval(timerRef.current);
     };
-  }, [isPopupVisible, currentQuestion, speakQuestion, hasSpoken]);
+  }, [isPopupVisible, currentQuestion, speakQuestion, hasSpoken, hasIntroDisplayed]);
 
   const handleRecordButtonClick = useCallback(() => {
     const stream = videoRef.current.srcObject;
@@ -240,10 +286,12 @@ const StartMockInterviewPopup = ({
           {isRecording ? (
             <i className="bx bx-stop"></i>
           ) : (
-            <i className="bx bx-video"></i>
+            <i className="bx bx-microphone"></i>
           )}
         </button>
-      </div>
+
+        {isTimesUp && <div>Times Up!</div>}
+     </div>
     </div>
   ) : null;
 };
