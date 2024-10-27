@@ -6,16 +6,12 @@ import axios from "axios";
 const UploadResumePopUp = ({
   isVisible,
   closePopup,
-  // isError,
-  // startMockInterview,
   updateQuestion,
   setLoading,
   isLoading,
 }) => {
   const [file, setFile] = useState(null);
   const [error, setError] = useState("");
-
-  // const [isLoading, setLoading] = useState(false);
   const fileInputRef = useRef(null);
   const [retrying, setRetrying] = useState(false); // State to track if we are retrying
 
@@ -40,15 +36,6 @@ const UploadResumePopUp = ({
 
   //This function will be used to upload the file and the return will the first question base on te Resume and pass to StartMockInterviewPopup component
   const handleUploadClick = async (selectedFile) => {
-    // setLoading(true);
-    // console.log("Starting upload process...");
-
-    // // Simulate upload completion
-    // setTimeout(() => {
-    //   setLoading(false);
-    //   console.log("Upload process completed:", selectedFile.name);
-    //   setLoading(true); // Trigger LoadScreenPopUp to check connection
-    // }, 1000); // Simulating a 1-second upload time
     try {
       setLoading(true);
       console.log("Starting upload process...");
@@ -106,13 +93,7 @@ const UploadResumePopUp = ({
       <div className="upload-container">
         <div className="upload-popup">
           {isLoading ? (
-            <LoadScreenPopUp
-            // isError={isError}
-            // onRetry={handleRetryUpload} // Pass the retry logic
-            // closePopup={closePopup}
-            // checkConnection={true} // Trigger connection check
-            // startMockInterview={startMockInterview} // Pass the function to LoadScreenPopUp
-            />
+            <LoadScreenPopUp />
           ) : (
             <div
               className="upload-area"
@@ -136,7 +117,7 @@ const UploadResumePopUp = ({
                   <p className="selected-file">Selected File: {file.name}</p>
                 )}
                 {retrying && (
-                  <p className="warning-message"> 
+                  <p className="warning-message">
                     An error has occurred. Please upload your file again.
                   </p>
                 )}{" "}

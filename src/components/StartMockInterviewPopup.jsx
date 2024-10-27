@@ -29,9 +29,30 @@ const StartMockInterviewPopup = ({
   const totalQuestions = question.length;
   const questionTimeLimit = 120; // 2 minutes per question
 
-  const speakQuestion = useCallback((text) => {
-    const utterance = new SpeechSynthesisUtterance(text);
-    speechSynthesis.speak(utterance);
+  const speakQuestion = useCallback(async (question) => {
+    // const utterance = new SpeechSynthesisUtterance(text);
+    // speechSynthesis.speak(utterance);
+    try {
+      const response = await axios.post("http://localhost:5000/api/audio", {
+        question,
+      });
+      const { audio } = response.data;
+
+      const audioBlob = new Blob(
+        [Uint8Array.from(atob(audio), (c) => c.charCodeAt(0))],
+        {
+          type: "audio/mp3",
+        }
+      );
+      const audioUrl = URL.createObjectURL(audioBlob);
+      const audioElement = new Audio(audioUrl);
+
+      audioElement
+        .play()
+        .catch((error) => console.error("Error playing audio:", error));
+    } catch (error) {
+      console.error("Error fetching audio:", error);
+    }
   }, []);
 
   const handleNextQuestion = useCallback(() => {
@@ -100,9 +121,9 @@ const StartMockInterviewPopup = ({
               position: "left",
             },
             {
-              element: '#closePopupBtn',
-              intro: 'Click this to close the mock interview.',
-              position: 'left',
+              element: "#closePopupBtn",
+              intro: "Click this to close the mock interview.",
+              position: "left",
             },
             {
               intro: `
@@ -117,21 +138,20 @@ const StartMockInterviewPopup = ({
                   <li>Speak clearly and at a moderate pace</li><br><br>
                 </ul>
               `,
-              position: 'center',
-              tooltipClass: 'custom-tooltip-last custom-width-500', // Custom class for last step
+              position: "center",
+              tooltipClass: "custom-tooltip-last custom-width-500", // Custom class for last step
             },
           ],
           showBullets: false,
           overlayOpacity: 0.8,
-          tooltipClass: 'custom-tooltip',
-          buttonClass: 'custom-intro-button',
-          doneLabel: 'Got It', // Label for final button
+          tooltipClass: "custom-tooltip",
+          buttonClass: "custom-intro-button",
+          doneLabel: "Got It", // Label for final button
         });
-               
+
         intro.start();
         setHasIntroDisplayed(true);
       }
-      
     }
 
     const currentVideoRef = videoRef.current;
@@ -272,7 +292,6 @@ const StartMockInterviewPopup = ({
 
   return isPopupVisible ? (
     <div className="popup-container" style={{ display: "flex" }}>
-
       <div className="popup-content">
         <i className="bx bx-x" id="closePopupBtn" onClick={closePopup}></i>
         <div className="timer" id="timer">
@@ -307,7 +326,6 @@ const StartMockInterviewPopup = ({
           )}
         </button>
       </div>
-
     </div>
   ) : null;
 };
