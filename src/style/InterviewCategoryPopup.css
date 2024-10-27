@@ -1,0 +1,66 @@
+.interview-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark overlay for better focus */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure the popup is on top */
+}
+
+.interview-popup-content {
+  position: relative; /* Set the position to relative for absolute positioning of the close button */
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners for a softer look */
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  width: 700px; /* Fixed width for consistency */
+}
+
+.interview-close-popup-btn {
+  position: absolute; /* Positioning the button absolutely */
+  top: 10px; /* Distance from the top */
+  right: 10px; /* Distance from the right */
+  background-color: transparent; /* Make the background transparent */
+  color: #dc3545; /* Match the color to the close icon */
+  border: none;
+  cursor: pointer;
+  font-size: 24px; /* Increase the font size for visibility */
+  transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.interview-close-popup-btn:hover {
+  color: #c82333; /* Darker shade on hover */
+}
+
+.interview-popup-content h2 {
+  margin-bottom: 20px; /* Space below the title */
+}
+
+.interview-category-options {
+  margin: 20px 0; /* Space around the category buttons */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.interview-category-btn {
+  padding: 10px 15px;
+  background-color: #000; /* Bootstrap primary color */
+  font-size: 16pt;
+  color: white;
+  border: none;
+  border-radius: 5px; /* Rounded corners for buttons */
+  cursor: pointer;
+  width: 48%;
+  height: 20vh;
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.interview-category-btn:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}

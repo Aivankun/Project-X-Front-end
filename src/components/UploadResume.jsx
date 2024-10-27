@@ -1,16 +1,21 @@
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const UploadResume = ({ setIsError, setIsLoading }) => {
+const UploadResume = ({ setIsLoading }) => {
   const [file, setFile] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false); // State for loading
+  const [loading, setLoading] = useState(false);
   const fileInputRef = useRef(null);
+  const navigate = useNavigate();
 
   const validExtensions = [
     'application/pdf',
     'application/msword',
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   ];
+
+  // New variable to track feature source
+  const featureFrom = "Resume Evaluator"; // Specify feature source
 
   const handleFileChange = (selectedFile) => {
     if (selectedFile && validExtensions.includes(selectedFile.type)) {
@@ -49,7 +54,9 @@ const UploadResume = ({ setIsError, setIsLoading }) => {
     setTimeout(() => {
       setLoading(false);
       console.log('Upload process completed:', selectedFile.name);
-      setIsLoading(true); // Trigger LoadScreenPopUp to check connection
+      setIsLoading(true);
+      // Redirect with state to indicate it's a Resume Evaluator
+      navigate('/result', { state: { featureFrom } }); // Pass featureFrom
     }, 1000); // Simulating a 1-second upload time
   };
 
@@ -63,8 +70,8 @@ const UploadResume = ({ setIsError, setIsLoading }) => {
       >
         <div className="upload-content">
           <i className="bx bx-upload upload-icon"></i>
-          {loading ? ( // Conditional rendering based on loading state
-            <p>Uploading...</p> // Show loading text or spinner here
+          {loading ? (
+            <p>Uploading...</p>
           ) : (
             <>
               <p>Drag and Drop files to upload</p>

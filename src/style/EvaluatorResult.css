@@ -1,0 +1,32 @@
+.evaluator-result {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .score-section {
+    margin-bottom: 20px;
+  }
+  
+  .strength-section, .improvement-section {
+    margin-top: 20px;
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  h3 {
+    color: #4CAF50; /* Green color for the score */
+  }
+  
+  h4 {
+    color: #2196F3; /* Blue color for section headings */
+  }
+  
+  p {
+    color: #555; /* Dark gray color for text */
+  }
+  
