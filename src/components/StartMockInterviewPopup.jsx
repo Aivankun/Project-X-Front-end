@@ -85,7 +85,7 @@ const StartMockInterviewPopup = ({
           steps: [
             {
               element: ".record-btn",
-              intro: "Click here to start recording your answer.",
+              intro: "Click here to start and stop recording your answer.",
               position: "left",
             },
             {
@@ -95,8 +95,8 @@ const StartMockInterviewPopup = ({
               position: "left",
             },
             {
-              element: ".sample-question",
-              intro: "Here is the question you need to answer.",
+              element: ".questions",
+              intro: "Here is the interview question you need to answer.",
               position: "left",
             },
             {

@@ -1,18 +1,18 @@
 /* Color Variables */
 :root {
     --background-color: #FFEE8C;
-    --light-background-color: #fae6dc;
+    --light-background-color: #fff;
     --tooltip-background: #fff;
     --tooltip-shadow: rgba(0, 0, 0, 0.3);
     --card-background: #fff;
-    --option-background: #fbfafa;
+    --option-background: #fff;
     --text-color: #000;
     --light-text-color: #FFEE8C;
     --fade-container: rgba(0, 0, 0, 0.781);
     --fade-bg-container-upload: #FFEE8Cca;
     --record-btn: #fd3b55;
-    --first-option-background: #FFEE8C;
-    --second-option-background: #ff909f;
+    --first-option-background: #FF8CD7;
+    --second-option-background: #8C9DFF;
     --third-option-background: #59c3b0;
     --forth-option-background: #424141;
 }
@@ -33,6 +33,7 @@
     padding: 6px 14px;
     z-index: 99;
     transition: all 0.5s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar.open {
@@ -57,6 +58,9 @@
     font-weight: 600;
     opacity: 0;
     transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .avatar > .logoImage {
     width: 60%;
@@ -187,6 +191,7 @@
 
 .sidebar li a:hover {
     background: var(--tooltip-background);
+    
 }
 
 .sidebar li a .links_name {
@@ -207,7 +212,7 @@
 .sidebar li a:hover .links_name,
 .sidebar li a:hover i {
     transition: all 0.5s ease;
-    color: var(--light-text-color);
+    color: var(--text-color);
 }
 
 .sidebar li i {
@@ -272,8 +277,9 @@
 /* Home Section */
 .home-section {
     position: relative;
-    background: var(--light-background-color);
+    background: var(--background-color);
     min-height: 100vh; /* Adjust height to account for header */
+    max-height: max-content;
     top: 0;
     left: 78px;
     width: calc(100% - 78px);
@@ -360,15 +366,14 @@
 /* Mock Interview Card */
 .card {
     height: 80vh;
-    background-color: var(--card-background);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 95%;
-    margin: 15px 15px 0px 15px;
+    /* border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); */
+    max-width: 100%;
+    margin: 20px 20px 0px 20px;
     text-align: center;
     display: flex;
-    flex-direction: column; /* Make sure to stack items vertically */
+    /* flex-direction: column; Make sure to stack items vertically */
 }
 
 .option-container {
@@ -378,7 +383,7 @@
 }
 
 .option-card {
-    width: 23%; /* Full width for better responsiveness */
+    width: 45%; /* Full width for better responsiveness */
     height: auto;
     display: flex;
     align-items: center;
@@ -389,16 +394,16 @@
     margin: 10px 0;
     color: var(--text-color);
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease; /* Smooth transition for scale */
 }
 /* Different background colors for each card */
 .option-card:nth-child(1) {
-    background-color: var(--first-option-background); /* Example for first option */
+    background-color: var(--light-background-color); /* Example for first option */
 }
 
 .option-card:nth-child(2) {
-    background-color: var(--second-option-background); /* Example for second option */
+    background-color: var(--light-background-color); /* Example for second option */
 }
 .option-card:nth-child(3) {
     background-color: var(--third-option-background); /* Example for second option */
@@ -419,8 +424,9 @@
 .job-name{
     font-weight: bold;
     text-align: left;
-    height: 60px;
+    height: auto;
     width: 100%; 
+    position: relative;
 }
 .option-card > .no-of-question {
     display: block;
@@ -598,9 +604,10 @@
   .custom-width-500 {
     max-width: 400px !important;
     width: 400px !important;
+    height: auto;
     padding: 20px; /* Adds padding for readability */
-    line-height: 1.5; /* Spacing between lines */
-    font-size: 15px; /* Customize font size */
+    line-height: 1.2; /* Spacing between lines */
+    font-size: 12px; /* Customize font size */
   }
   /* Style for the last step tooltip button */
 .custom-tooltip-last .introjs-prevbutton {
@@ -612,6 +619,12 @@
     font-weight: bold;
     background-color: var(--text-color); /* Customize button color */
     color: white; /* Text color */
+  }
+  .introjs-tooltiptext{
+    padding: 10px !important;
+  }
+  .introjs-tooltiptext > ul{
+    padding-left: 1.3em;
   }
   /* Custom tooltip styles */
 .custom-tooltip {
