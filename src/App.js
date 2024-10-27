@@ -11,7 +11,7 @@ function App() {
     return (
         <Router>
             <div className="app">
-                <div className="main-content">
+                <div className="main-content">  
                     <Routes>
                         <Route path="/" element={<LandingPage />} /> {/* Main landing page */}
                         <Route path="/login" element={<Login />} /> {/* Login page */}
