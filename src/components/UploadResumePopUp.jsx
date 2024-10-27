@@ -41,7 +41,6 @@ const UploadResumePopUp = ({
       console.log("Starting upload process...");
       const formData = new FormData();
       formData.append("file", selectedFile);
-
       const response = await axios.post(
         "http://localhost:5000/api/generateQuestions",
         formData,
