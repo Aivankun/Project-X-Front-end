@@ -39,8 +39,10 @@ const SidebarMainDashboard = ({ toggleSidebar, isSidebarOpen }) => {
         </li>
 
         <li className="profile">
-          <div className="Logout" onClick={() => alert("Logout functionality not implemented yet.")}>LOGOUT</div>
-          <i className="bx bx-log-out" id="log_out"></i>
+        <div className="Logout" onClick={() => alert("Logout functionality not implemented yet.")}>
+          <i className="bx bx-log-out" ></i>
+          LOGOUT</div>
+          
         </li>
       </ul>
     </div>

@@ -51,7 +51,7 @@ const Result = () => {
             </div>
           ) : (
             <div className="result-feedback-comment">
-              <h2>Interviewer Result</h2>
+              <h2>Interview Result</h2>
               <h3 className="rating">Overall Rating</h3>
               <div className="score-point">
                 <p>7.8

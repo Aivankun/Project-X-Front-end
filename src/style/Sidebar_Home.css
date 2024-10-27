@@ -15,6 +15,7 @@
     --second-option-background: #8C9DFF;
     --third-option-background: #59c3b0;
     --forth-option-background: #424141;
+    --shade-container: #5CC39A;
 }
 
 * {
@@ -133,6 +134,7 @@
     transition: all 0.4s ease;
     top: 50%;
     transform: translateY(-50%);
+    
 }
 
 .sidebar.open li .tooltip {
@@ -173,10 +175,7 @@
     color: var(--text-color);
 }
 
-.sidebar .bx-search:hover {
-    background: var(--tooltip-background);
-    color: var(--light-text-color);
-}
+
 
 .sidebar li a {
     display: flex;
@@ -190,8 +189,8 @@
 }
 
 .sidebar li a:hover {
-    background: var(--tooltip-background);
-    
+    background: var(--option-background);
+   
 }
 
 .sidebar li a .links_name {
@@ -213,6 +212,7 @@
 .sidebar li a:hover i {
     transition: all 0.5s ease;
     color: var(--text-color);
+    
 }
 
 .sidebar li i {
@@ -268,6 +268,9 @@
     line-height: 60px;
     border-radius: 0px;
     transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sidebar.open .profile #log_out {
@@ -304,6 +307,7 @@
     height: 66px;
     background-color: var(--background-color);
     z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: fixed; /* Changed to fixed */
     top: 0; /* Position it at the top */
     left: 0; /* Align to the left edge */
@@ -311,7 +315,7 @@
     transition: width 0.3s ease; /* Smooth transition for width change */
 }
 .user-info {
-    width: 150px;
+    width: 100px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -321,21 +325,35 @@
 .user-info > .dropdown-menu {
     position: absolute;
     top: 100%; /* Position it below the user name */
-    background-color: var(--option-background);
+    background-color: var(--card-background);
     border-radius: 15px;
     z-index: 1000; /* Make sure it appears on top */
     border: none;
+    width: 200px;
+    max-width: 200px;
+    right: 20px;
+    top: 75px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
+.username-email-container{
+    
+    background-color: var(--card-background);
+    padding:10px 10px ;
+
+}
+.username-email-container > .email{
+    font-size: 10pt;
+}
 .dropdown-item {
-    padding: 10px 15px;
+    width: 200px;
+    padding: 5px  10px ;
     cursor: pointer;
     display: flex; /* Use flexbox for alignment */
     align-items: center; /* Center icons and text vertically */
     transition: background-color 0.3s; /* Smooth transition */
-    background: var(--background-color);
+    background: var(--card-background);
     color: var(--text-color);
-    width: 150px;
 }
 
 .dropdown-item i {
@@ -346,7 +364,6 @@
     width: 100%;
     text-align: center;
     color: var(--text-color); /* Adjust this based on your theme */
-    margin-right: 10px; /* Space between name and icons */
     font-weight: 600; /* You can adjust this */
     margin: 0;
 }
@@ -359,9 +376,9 @@
     transition: color 0.3s; /* Smooth color transition */
 }
 
-.user-info i:hover {
-    color: var(--light-text-color); /* Hover color */
-}
+/* .user-info i:hover {
+    color: var(--option-background);
+} */
 
 /* Mock Interview Card */
 .card {
@@ -370,27 +387,35 @@
     /* border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); */
     max-width: 100%;
+    width: 100%;
     margin: 20px 20px 0px 20px;
-    text-align: center;
     display: flex;
-    /* flex-direction: column; Make sure to stack items vertically */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
 }
-
+.card > h2{
+    font-size: 23pt;
+    font-weight: 700;
+    margin-top: 60px;
+    padding: 20px;
+}
 .option-container {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
 }
 
 .option-card {
     width: 45%; /* Full width for better responsiveness */
-    height: auto;
     display: flex;
     align-items: center;
     flex-direction: column;
     background-color: var(--option-background);
     border-radius: 8px;
-    padding: 10px;
+    padding: 20px;
     margin: 10px 0;
     color: var(--text-color);
     cursor: pointer;
@@ -421,18 +446,37 @@
     height: auto; /* Adjust the size as necessary */
     margin-right: 10px; /* Space between image and button */
 }
+.smile-job{
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.smile-job > img{
+    width: 60%;
+    /* border: 2px solid var(--forth-option-background);
+    border-radius: 50%; */
+    
+}
 .job-name{
+    font-size: 16pt;
     font-weight: bold;
     text-align: left;
     height: auto;
-    width: 100%; 
     position: relative;
+    padding-bottom: 20px;
+}
+.option-card > .content-job{
+    text-align: center;
+    width: 98%;
+    overflow: visible;
 }
 .option-card > .no-of-question {
-    display: block;
-    text-align: left; /* Ensure text aligns to the left */
-    font-size: 8pt;
-    width: 100%; /* Set width to ensure it takes the full width of the card */
+    text-align: center; 
+    font-size: 12pt;
+    width: 100%; 
 }
 
 /* Popup container */
@@ -467,6 +511,7 @@
     width: 100%; /* Make the video responsive */
     height: auto;
     padding: 10px;
+    transform: scaleX(-1);
 }
 
 .popup-content .avatar {

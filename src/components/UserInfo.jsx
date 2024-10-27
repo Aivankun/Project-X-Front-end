@@ -23,15 +23,22 @@ const UserInfo = ({ isDropdownVisible, setDropdownVisible }) => {
   return (
     <div className="user-info" ref={dropdownRef}>
       <span className="user-name" onClick={() => setDropdownVisible((prev) => !prev)}>
-        User Name
+        <i class='bx bx-user' ></i>
       </span>
       {isDropdownVisible && (
         <div className="dropdown-menu">
+          <div className="username-email-container">
+            <p className='name-of-user'>John Doe</p>
+            <p className='email'>sample@gmail.com</p>
+          </div>
           <div className="dropdown-item" onClick={() => alert("Settings functionality not implemented yet.")}>
-            <i className="bx bx-cog"></i>Settings
+            Profile
+          </div>
+          <div className="dropdown-item" onClick={() => alert("Settings functionality not implemented yet.")}>
+            Settings
           </div>
           <div className="dropdown-item" onClick={() => alert("Logout functionality not implemented yet.")}>
-            <i className="bx bx-log-out"></i>Logout
+            Logout
           </div>
         </div>
       )}
