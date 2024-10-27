@@ -56,6 +56,7 @@ const UploadResume = ({ setIsLoading }) => {
       console.log('Upload process completed:', selectedFile.name);
       setIsLoading(true);
       // Redirect with state to indicate it's a Resume Evaluator
+      
       navigate('/result', { state: { featureFrom } }); // Pass featureFrom
     }, 1000); // Simulating a 1-second upload time
   };
