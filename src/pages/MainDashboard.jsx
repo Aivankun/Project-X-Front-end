@@ -1,77 +1,91 @@
+// src/components/MainDashboard.jsx
+
 import React, { useState, useRef } from "react";
 import SidebarMainDashboard from "../components/SidebarMainDashboard";
 import StartMockInterviewPopup from "../components/StartMockInterviewPopup";
 import CardOptions from "../components/CardOptions";
 import NavbarMainDashboard from "../components/NavbarMainDashboard";
 import UploadResumePopUp from "../components/UploadResumePopUp";
+import InterviewCategoryPopup from "../components/InterviewCategoryPopup"; // Import the popup
 import "../style/UploadResumePopUp.css";
 
 const MainDashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [isUploadVisible, setUploadVisible] = useState(false);
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
-  // const [isError, ,setError] = useState(false); // Ensure this state is defined
-  const videoRef = useRef(null);
-  // const [firstQuestion, setFirstQuestion] = useState(""); // Initialize the state
-  const [question, setQuestion] = useState([]); // Initialize the state
+  const [isInterviewPopupVisible, setInterviewPopupVisible] = useState(false);
+  const [videoRef, setVideoRef] = useState(null);
+  const [question, setQuestion] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  const [currentQuestion, setCurrentQuestion] = useState(0); // State for current question
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [isDropdownVisible, setDropdownVisible] = useState(false); // Add this line
 
   const toggleSidebar = () => setSidebarOpen((prev) => !prev);
   const startMockInterview = () => setPopupVisible(true);
   const closePopup = () => {
     setPopupVisible(false);
-    setCurrentQuestion(0); // Reset to the first question when closing
+    setCurrentQuestion(0);
   };
   const openUploadPopup = () => setUploadVisible(true);
+  const closeUploadPopup = () => setUploadVisible(false);
 
-  const closeUploadPopup = () => {
-    setUploadVisible(false);
+  const openInterviewPopup = () => {
+    setInterviewPopupVisible(true);
+  };
+
+  const closeInterviewPopup = () => {
+    setInterviewPopupVisible(false);
   };
 
   const updateQuestion = (question) => {
-    setQuestion(question); // Update the state when the question is fetched
-    setLoading(false); // Stop loading when question is ready
-    closeUploadPopup(); // Close the upload popup after fetching the question
-    setPopupVisible(true); // Open mock interview popup when the first question is available
+    setQuestion(question);
+    setLoading(false);
+    closeUploadPopup();
+    setPopupVisible(true);
+  };
+
+  // New function to handle category selection
+  const handleCategorySelect = (category) => {
+    console.log("Selected category:", category);
+    startMockInterview(); // Open the mock interview popup
+    // Here you can set the category-related questions based on the selected category if needed
   };
 
   return (
     <>
-      <SidebarMainDashboard
-        toggleSidebar={toggleSidebar}
-        isSidebarOpen={isSidebarOpen}
-      />
+      <SidebarMainDashboard toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
 
       <section className="home-section">
-        <NavbarMainDashboard
-          isDropdownVisible={isDropdownVisible}
-          setDropdownVisible={setDropdownVisible}
-        />
+        <NavbarMainDashboard 
+        isDropdownVisible={isDropdownVisible} 
+        setDropdownVisible={setDropdownVisible} />
         <CardOptions
-          startMockInterview={startMockInterview}
+          openInterviewPopup={openInterviewPopup}
           openUploadPopup={openUploadPopup}
         />
       </section>
+
       <StartMockInterviewPopup
         isPopupVisible={isPopupVisible}
         closePopup={closePopup}
         videoRef={videoRef}
         question={question}
-        currentQuestion={currentQuestion} // Pass current question
-        setCurrentQuestion={setCurrentQuestion} // Pass setter function
+        currentQuestion={currentQuestion}
+        setCurrentQuestion={setCurrentQuestion}
       />
 
       <UploadResumePopUp
         isVisible={isUploadVisible}
         closePopup={closeUploadPopup}
-        // isError={isError} // Pass the error state if needed
-        startMockInterview={startMockInterview} // Pass the function here
+        startMockInterview={startMockInterview} 
         updateQuestion={updateQuestion}
-        setLoading={setLoading} // Set loading state from here
-        isLoading={isLoading} // Pass loading state to the child
+        setLoading={setLoading} 
+        isLoading={isLoading}
       />
+
+      {isInterviewPopupVisible && (
+        <InterviewCategoryPopup onClose={closeInterviewPopup} onCategorySelect={handleCategorySelect} />
+      )}
     </>
   );
 };
