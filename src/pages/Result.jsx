@@ -33,7 +33,7 @@ const Result = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <SidebarMainDashboard
         toggleSidebar={toggleSidebar}
         isSidebarOpen={isSidebarOpen}
@@ -50,16 +50,30 @@ const Result = () => {
               <h1>Loading...</h1>
             </div>
           ) : (
-            <div>
-              <h1>Interview Result</h1>
-              <div className="result-details">
-                <p>{feedback}</p>
+            <div className="result-feedback-comment">
+              <h2>Interviewer Result</h2>
+              <h3 className="rating">Overall Rating</h3>
+              <div className="score-point">
+                <p>7.8
+                  <p className="over-by-ten">/10</p></p>
               </div>
+
+              <h3>Feedback</h3>
+              
+              <p className="feedback">"{feedback}"</p>
+              <h3>Comments</h3>
+              <ul className="comment">
+                <li>Strong problem-solving skills demonstrated</li>
+                <li>Excellent knowledge of React and state management</li>
+                <li>Good communication throughout the interview</li>
+                <li>Could improve on system design concepts</li>
+              </ul>
             </div>
           )}
         </div>
+
       </section>
-    </div>
+    </>
   );
 };
 

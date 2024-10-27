@@ -1,18 +1,88 @@
-.result-container{
+:root {
+    --primary-color: #FFEE8C  !important;
+    --secondary-color: #5CC39A !important;
+    --text-black-color: #010101 !important;
+    --text-white-color: #fff !important;
+    --btn-color: #e5f4f2 !important;
+    --header-bg-color: #FFEE8C  !important;
+    --bg-color: #FFEE8C !important;
+    
+  }  
+.result-container {
     width: 100%;
-    background-color: var(--card-background);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 90%;
     height: 80vh;
     margin: 20px 20px 0px 20px;
+    padding: 20px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
 }
 
-.result-container p{
+.rating{
+    text-align: center !important;
+    padding-top: 30px;
+}
+
+.result-container p {
     text-align: justify;
+    line-height: 1.6;
+    color: var(--text-black-color);
+}
+
+
+.result-container > div > h3 {
+    font-size: 14pt;
+    text-align: left;
+    color: var(--text-black-color);
+    margin-bottom: 10px;
+    padding-top: 20px;
+}
+
+.feedback {
+    text-align: left;
+    list-style-type: disc;
+    margin: 10px 0;
+    color: var(--text-black-color);
+    font-size: 11pt;
+    font-style: italic;
+}
+
+.comment li {
+    margin-bottom: 5px;
+    
+}
+
+.score-point {
+    background-color: var(--);
+    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-point > p {
+    font-size: 48pt;
+    font-weight: bold;
+    color: var(--text-black-color);
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+p > .over-by-ten{
+    padding-top: 15px;
+    font-size: 28pt ;
+}
+.comment {
+    padding-left: 1.5em;
+    
+    color: var(--text-black-color);
+    text-align: left;
+    font-size: 11pt;
 }
